@@ -1,0 +1,46 @@
+<ion-view view-title="Game">
+  <!-- do you want padding -->
+  <div class="bar bar-header bar-light" style="height: 80px; margin-top: 25px;">
+    <h1 style="font-size: 40px;" class="title">Super(set)</h1>
+  </div>
+
+
+
+
+
+
+        <div class="Aligner">
+          <ul class="list">
+            <li class="item" style="text-align: center;">
+              <a style="font-size: 40px;" class='button button-clear button-balanced' 
+                ui-sref="game({gameType: 'levels'})" ui-sref-opts="{reload: true}">Race</a>
+            </li>
+            <li class="item" style="text-align: center;">
+              <a style="font-size: 40px;" class='button button-clear button-energized' 
+                ui-sref="options({gameMode: 'timed'})">Time Trial</a>
+            </li>
+            <li class="item" style="text-align: center;">
+              <a style="font-size: 40px;" class='button button-clear button-positive' 
+                ui-sref="options({gameMode: 'freeplay'})">Free Play</a>
+            </li>
+            <li class="item" style="text-align: center;">
+              <a style="font-size: 40px;" class='button button-clear button-royal' 
+                ui-sref="howto">How to Play</a>
+            </li>
+        </ul>
+        </div>
+
+
+
+
+
+
+
+
+
+  <div class="bar bar-footer bar-light">
+    <a style="font-size: 30px;" class='button button-clear button-positive' href="#/scores/levels">High Scores</a>
+    <a style="font-size: 30px;" class='button button-clear button-stable' href="#/settings">Settings</a>
+  </div>
+
+</ion-view>

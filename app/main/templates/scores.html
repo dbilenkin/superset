@@ -1,0 +1,122 @@
+<ion-view view-title="Scores">
+    <!-- do you want padding -->
+
+
+    <div class="bar bar-header bar-light">
+        <button class="button button-clear icon-left ion-arrow-left-b pull-left" ui-sref="start"></button>
+        <h1 ng-if="$ctrl.setType != ''" class="title">{{$ctrl.setType | uppercase}} {{$ctrl.cardsPerSet}} Scores</h1>
+        <h1 ng-if="$ctrl.setType == ''" class="title">RACE Scores</h1>
+
+    </div>
+
+    <ion-pane>
+        <ion-content class="has-header" has-bouncing="false">
+
+            <div class="button-bar">
+                <a grouped-radio="'race'" ng-model="$ctrl.gameMode">Race</a>
+                <a grouped-radio="'time trial'" ng-model="$ctrl.gameMode">Time Trial</a>
+            </div>
+
+            <div class="button-bar" ng-if="$ctrl.gameMode == 'time trial'">
+                <a grouped-radio="'3'" ng-model="$ctrl.cardsPerSet">3</a>
+                <a grouped-radio="'4'" ng-model="$ctrl.cardsPerSet">4</a>
+                <a grouped-radio="'5'" ng-model="$ctrl.cardsPerSet">5</a>
+            </div>
+
+            <div class="button-bar" ng-if="$ctrl.gameMode == 'time trial'">
+                <a grouped-radio="'Subset'" ng-model="$ctrl.setType">Subset</a>
+                <a grouped-radio="'Set'" ng-model="$ctrl.setType">Set</a>
+                <a grouped-radio="'Superset'" ng-model="$ctrl.setType">Superset</a>
+            </div>
+
+
+
+            <!-- <div class="row">
+                <div class="col-25">
+                    <div class="item item-divider">
+                        cards
+                    </div>
+                    <ion-radio ng-disabled="$ctrl.gameMode == 'levels'" name="cardsPerSet" ng-model="$ctrl.cardsPerSet" ng-value="'3'">3</ion-radio>
+                    <ion-radio ng-disabled="$ctrl.gameMode == 'levels'" name="cardsPerSet" ng-model="$ctrl.cardsPerSet" ng-value="'4'">4</ion-radio>
+                    <ion-radio ng-disabled="$ctrl.gameMode == 'levels'" name="cardsPerSet" ng-model="$ctrl.cardsPerSet" ng-value="'5'">5</ion-radio>
+                </div>
+                <div class="col">
+                    <div class="item item-divider">
+                        attributes
+                    </div>
+                    <ion-radio ng-disabled="$ctrl.gameMode == 'levels'" name="setType" ng-model="$ctrl.setType" ng-value="'Subset'">Subset</ion-radio>
+                    <ion-radio ng-disabled="$ctrl.gameMode == 'levels'" name="setType" ng-model="$ctrl.setType" ng-value="'Set'">Set</ion-radio>
+                    <ion-radio ng-disabled="$ctrl.gameMode == 'levels'" name="setType" ng-model="$ctrl.setType" ng-value="'Superset'">Superset</ion-radio>
+                </div>
+                <div class="col">
+                    <div class="item item-divider">
+                        game type
+                    </div>
+                    <ion-radio name="gameMode" ng-model="$ctrl.gameMode" ng-value="'levels'">Levels</ion-radio>
+                    <ion-radio name="gameMode" ng-model="$ctrl.gameMode" ng-value="'timed'">Time Trial</ion-radio>
+                    <ion-radio name="gameMode" ng-model="$ctrl.gameMode" ng-value="'marathon'">Marathon</ion-radio>
+                </div>
+            </div> -->
+
+            <ion-scroll has-bouncing="false" style="height: {{$ctrl.scoreHeight}}px;">
+
+                <div class="row scoreItem" ng-if="$ctrl.scores.length == 0">
+                    <div class="col">
+                        You haven't played this game type yet.
+                    </div>
+                </div>
+                <div class="row scoreHeader" ng-if="$ctrl.scores.length > 0">
+                    <div class="col-10">
+
+                    </div>
+                    <div class="col" style="text-align: right;">
+                        points
+                    </div>
+                    <div class="col" style="text-align: right;" ng-show="$ctrl.gameMode == 'race'">
+                        level
+                    </div>
+                    <div class="col" style="text-align: right;">
+                        sets
+                    </div>
+
+                </div>
+
+                <div ng-class="{'selectedScore': gameScoreId == score.id}" class="row scoreItem" ng-repeat="score in $ctrl.scores track by $index">
+                    <div class="col-10">
+                        {{$index + 1}}
+                    </div>
+                    <div class="col" style="text-align: right;">
+                        {{score.points}}
+                    </div>
+                    <div class="col" style="text-align: right;" ng-show="$ctrl.gameMode == 'race'">
+                        {{score.level}}
+                    </div>
+                    <div class="col" style="text-align: right;">
+                        {{score.sets}}
+                    </div>
+
+                </div>
+
+            </ion-scroll>
+
+
+
+
+        </ion-content>
+    </ion-pane>
+    <div class="bar bar-footer bar-light">
+
+        <div style="text-align: left" class="col">
+            <a style="font-size: 20px;" class="button button-clear button-energized" ng-click="$ctrl.resetScores()">
+                        Reset Scores
+                    </a>
+        </div>
+        <div style="text-align: right" class="col">
+
+            <a style="font-size: 20px;" class="button button-clear button-assertive" ng-click="$ctrl.resetAll()">
+                        Reset All
+                    </a>
+        </div>
+    </div>
+
+</ion-view>

@@ -1,0 +1,141 @@
+
+
+<ion-view view-title="Start">
+    <div class="bar bar-header bar-light">
+        <button class="button button-clear icon-left ion-arrow-left-b pull-left" ui-sref="start"></button>
+        <h1 class="title">How to Play</h1>
+    </div>
+    <ion-content class="has-header" has-bouncing="false">
+
+        <!-- content goes here -->
+         
+
+
+
+        <ion-slide-box on-slide-changed="$ctrl.slideChanged(index)" style="height: {{$ctrl.gridHeight}}px;">
+            <ion-slide>
+                <h3>How to make a set</h3>
+                <p>
+                   Cards have different attributes like
+                </p>
+                <p>
+                   <span style="color: blue;">shape, number, pattern, color and background</span>
+                </p>
+                <p>
+                   To make a set each of these attributes have to<br>be all the SAME or all DIFFERENT
+                </p>
+                <div class="row cardRow">
+                    <div class="col" ng-repeat="card in $ctrl.examples[0][0]">
+                        <div id="card{{card.id}}" class="setCard {{card.background}}" ng-style="{height: $ctrl.gridHeight/3 + 'px'}"
+                        ng-class="card.cssClass" ng-click="$ctrl.toggleSelect(card)">
+                        <svg width="100%" height="100%" id="svg{{card.id}}"></svg>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    This is a set because it has:
+                </p>
+                <p>
+                    All the SAME shape<br>
+                    All the SAME pattern<br>
+                    All the SAME color<br>
+                    All DIFFERENT numbers
+                </p>
+            </ion-slide>
+            <ion-slide>
+                <h3>How NOT to make a set</h3>
+                <p>
+                   If the attributes are not all the SAME or all DIFFERENT then it's not a set.
+                </p>
+                <div class="row cardRow">
+                    <div class="col" ng-repeat="card in $ctrl.examples[1][0]">
+                        <div id="card{{card.id}}" class="setCard {{card.background}}" ng-style="{height: $ctrl.gridHeight/3 + 'px'}"
+                        ng-class="card.cssClass" ng-click="$ctrl.toggleSelect(card)">
+                        <svg width="100%" height="100%" id="svg{{card.id}}"></svg>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    This is <b>NOT</b> a set even though it has:
+                </p>
+                <p>
+                    All DIFFERENT shapes<br>
+                    All the SAME pattern<br>
+                    All the SAME number<br><br>
+                    Because two cards are red and one is green.
+                </p>
+            </ion-slide>
+            <ion-slide>
+                <h3>4 and 5 card sets</h3>
+                <p>
+                   Sets are not limited to 3 cards. <br>The same rule of all the SAME or all DIFFERENT <br>apply to 4 or 5 cards as well
+                </p>
+                <div class="row cardRow">
+                    <div class="col" ng-repeat="card in $ctrl.examples[2][0]">
+                        <div id="card{{card.id}}" class="setCard {{card.background}}" ng-style="{height: $ctrl.gridHeight/4 + 'px'}"
+                        ng-class="card.cssClass" ng-click="$ctrl.toggleSelect(card)">
+                        <svg width="100%" height="100%" id="svg{{card.id}}"></svg>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    This is a set because it has:
+                </p>
+                <p>
+                    All DIFFERENT shapes<br>
+                    All DIFFERENT patterns<br>
+                    All DIFFERENT colors<br>
+                    All the SAME number
+                </p>
+            </ion-slide>
+            <ion-slide>
+                <h3>Difficult Sets</h3>
+                <p>
+                   Here is an example of a 5 card set where all the attributes are DIFFERENT.<br>
+                   These kinds of sets can be the hardest to spot and are worth more points.
+                </p>
+                <div class="row cardRow">
+                    <div class="col-125"></div>
+                    <div class="col-25" ng-repeat="card in $ctrl.examples[3][0]">
+                        <div id="card{{card.id}}" class="setCard {{card.background}}" ng-style="{height: $ctrl.gridHeight/4 + 'px'}"
+                        ng-class="card.cssClass" ng-click="$ctrl.toggleSelect(card)">
+                        <svg width="100%" height="100%" id="svg{{card.id}}"></svg>
+                        </div>
+                    </div>
+                    <div class="col-20"></div>
+                </div>
+                <div class="row cardRow">
+                    <div class="col-25"></div>
+                    <div class="col-25" ng-repeat="card in $ctrl.examples[3][1]">
+                        <div id="card{{card.id}}" class="setCard {{card.background}}" ng-style="{height: $ctrl.gridHeight/4 + 'px'}"
+                        ng-class="card.cssClass" ng-click="$ctrl.toggleSelect(card)">
+                        <svg width="100%" height="100%" id="svg{{card.id}}"></svg>
+                        </div>
+                    </div>
+                    <div class="col-20"></div>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+
+
+    </ion-content>
+    <div class="bar bar-light bar-footer">
+
+
+          <a style="font-size: 30px;" class="button button-positive button-clear no-animation"
+                  ng-click="$ctrl.previous()" ng-show="$ctrl.slideIndex > 0">
+            Previous
+          </a>
+
+          <a style="font-size: 30px;" class="button button-positive button-clear no-animation pull-right"
+                  ng-click="$ctrl.next()" ng-show="$ctrl.slideIndex != 3">
+            Next
+          </a>
+          <a style="font-size: 30px;" class="button button-positive button-clear no-animation"
+                  ng-click="$ctrl.start()" ng-show="$ctrl.slideIndex == 3">
+            Back to Start
+          </a>
+
+    </idiv>
+
+</ion-view>

@@ -1,0 +1,56 @@
+<ion-view view-title="Start">
+
+  <div class="bar bar-header bar-light">
+    <button class="button button-clear icon-left ion-arrow-left-b pull-left" ui-sref="start"></button>
+    <h1 class="title">{{$ctrl.gameModeTitle}} Options</h1>
+  </div>
+
+
+  <!-- content goes here -->
+
+
+  <div class="Aligner">
+    <ul class="list options" style="border: 1px solid #ddd;">
+      <li>
+
+
+            <div class="item" style="text-align: center; font-size: 30px;">
+              Cards per set
+            </div>
+            
+            <div class="button-bar">
+                <a grouped-radio="'3'" ng-model="$ctrl.cardsPerSet">3</a>
+                <a grouped-radio="'4'" ng-model="$ctrl.cardsPerSet">4</a>
+                <a grouped-radio="'5'" ng-model="$ctrl.cardsPerSet">5</a>
+            </div>
+            </li>
+            <li>
+
+
+
+            <div class="item" style="text-align: center; font-size: 30px;">
+              Set type
+            </div>
+            <div class="button-bar">
+                <a grouped-radio="'Subset'" ng-model="$ctrl.setType">Subset</a>
+                <a grouped-radio="'Set'" ng-model="$ctrl.setType">Set</a>
+                <a grouped-radio="'Superset'" ng-model="$ctrl.setType">Superset</a>
+            </div>
+
+      </li>
+      <li>
+        <div class="item">
+                <a style="font-size: 40px; text-align: center;" class="button button-clear button-full button-balanced" ui-sref="game({gameType: $ctrl.setType + '' + $ctrl.cardsPerSet})"
+                  ui-sref-opts="{reload: true}">
+                        Start!
+                      </a>
+        </div>
+
+      </li>
+    </ul>
+  </div>
+
+
+
+
+</ion-view>
